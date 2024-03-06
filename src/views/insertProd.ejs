@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
+</head>
+<body>
+   <div class="container">
+    <a href="/login">Volver</a>
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <h1>Tabla Dispositivo</h1>
+            <!-- validamos que se encuentre la variable y tenga valores-->
+            <% if (dataPhone && dataPhone.length == 0) { %>
+                <h2>Register Phone Please....</h1>
+            <% } else{%>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Phone Name</th>
+                        <th>Phone Type</th>
+                        <th>Phone Description</th>
+                        <th>Phone Img</th>
+                        <th>Phone Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <% for(var i = 0; i< dataPhone.length; i++){%>
+                            <tr>
+                                <td><%= dataPhone[i].phone_id %></td>
+                                <td><%= dataPhone[i].type %></td>
+                                <td><%= dataPhone[i].name %></td>
+                                <td><%= dataPhone[i].description %></td>
+                                <td><a href="<%= dataPhone[i].img %>">Click</a></td>
+                                <td><%= dataPhone[i].price %></td>
+                                <td><a href="/deleteprod/<%= dataPhone[i].phone_id %>" class=" btn btn-danger">Delete</a></td>
+                                
+                            </tr>
+                        <% } %>
+                                <h1>Register phone</h1>
+                        <% } %>
+
+            </table>
+        </div>
+        <div class="col-md-5">
+            <h1>Registrar dispositivo</h1>
+             <form action="/InsertPhone" method="post" enctype="multipart/form-data"> 
+                
+                <div class="form-group">
+                    <label for="">Phone type</label>
+                    <select name="type" id="" class="form-select" required>
+                        <option disabled selected>Select....</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Huawei">huawei</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Other">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Phone Name</label>
+                    <input type="text" placeholder="phone name" name="phoneN" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Phone Description</label>
+                    <input type="text" placeholder="phone description" name="des" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Phone Img</label>
+                    <input type="file" placeholder="phone img" name="img" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Phone Price</label>
+                    <input type="number" placeholder="phone price" id="priceInput" name="price" class="form-control" required>
+                </div><br>
+                <div class="form-group">
+                    <input type="submit" value="Insert" class="form-control bg-dark text-white">
+                </div>
+            </form>
+        </div>
+    </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+   <% if(typeof alert !=  'undefined'){%>
+       <script>
+           Swal.fire({
+               title: "<%= alertTitle %>",
+               text: "<%= alertMessage %>",
+               icon:"<%= alertIcon %>",
+               showConfirmButton : <%= showConfirmButton %>,
+               timer: <%= timer %>
+           }).then(()=>{
+               window.location ='/<%=ruta%>'
+           })
+       </script>
+       <% } %>
+   </body>
+</html>

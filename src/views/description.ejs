@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="/css/movilWeb.css">
+    <title>Description</title>
+    <style>
+        /* Estilos personalizados */
+        .navbar {
+            background-color: #343a40 !important; /* Fondo gris oscuro para la barra de navegación */
+        }
+        .navbar-brand img {
+            height: 45px;
+        }
+        .page-content-D {
+            padding: 20px;
+        }
+        .product-container-D {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-container-D h1 {
+            color: #343a40;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .product-container-D img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .product-container-D p {
+            color: #6c757d;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .product-container-D textarea {
+            resize: none;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .product-container-D .btn-light {
+            background-color: #f8f9fa;
+            color: #343a40;
+            border-color: #343a40;
+        }
+        .product-container-D .btn-light:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body class="bodyDes"> 
+    <!-- ENCABEZADO PARA ENTRAR AL PERFIL-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="/Icon/icon.png"></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> <br>
+    <!-- Description -->
+    <div class="container">
+        <div class="page-content-D"> 
+            <div class="product-container-D">
+                <h1><%= dataPhone[0].name %></h1>
+                <img src="<%= dataPhone[0].img %>" alt="<%= dataPhone[0].name %>">
+                <p>Producto no disponible en tu región :(</p>
+                <button id="miBoton" class="btn btn-light text-dark" disabled>Comprar</button>
+                <br><br>
+                <h2>Descripcion</h2>
+                <p><%= dataPhone[0].description %></p>
+                <br>
+                <form action="/comment/<%= dataPhone[0].phone_id %>" class="row g-3 needs-validation" method="post" novalidate>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Comentarios!!</label>
+                        <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" required placeholder="Que opinas tu?" style="opacity: 0.7;"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-light text-dark" type="submit">Enviar</button>
+                    </div>
+                </form>
+                <!-- Campo para visualización de comentarios -->
+                <div class="mt-4">
+                    <h4>Comentarios:</h4>
+                    <ul id="commentList" class="list-group">
+                        <!-- Aquí se mostrarán los comentarios -->
+                        <% comment.forEach(comment => {%>
+                            <li  class="list-group-item"> <%= comment.comment%></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

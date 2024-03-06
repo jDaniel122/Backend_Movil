@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/LoginRegister.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <div class="register-form">
+        <h2>We need your registration so you can be part of our family.</h2>
+        <form action="/register" method="POST">
+
+            <label for="">User </label>
+            <input type="text" name="user"  placeholder="write your favorite user" required>
+
+            <label for="">User name</label>
+            <input type="text" name="name" placeholder="write your name please" required>
+            
+            <label for="">Email</label>
+            <input type="email" name="mail" placeholder="write your mail" required> <br>
+           
+            <label for="">Rol</label>
+            <select name="rol" id="rol" class="select-css">
+                <option disabled selected>select..</option>
+                <option value="1">Vendedor</option>
+                <option value="2">Cliente</option>
+            </select> <br>
+            
+            <label for="">password</label>
+            <input type="password" name="password" id="pass" placeholder="Write a difficult password" required>
+
+
+            <input type="submit" name="enter" value="Register" class="btn-save">
+        </form>
+        <p>Do you already have an account <a href="/login" class="btn-cancel">sign in</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(typeof alert !=  'undefined'){%>
+        <script>
+            Swal.fire({
+                title: "<%= alertTitle %>",
+                text: "<%= alertMessage %>",
+                icon:"<%= alertIcon %>",
+                showConfirmButton : <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location ='/<%=ruta%>'
+            })
+        </script>
+        <% } %>
+    </body>
+</html>

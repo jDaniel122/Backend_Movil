@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/LoginRegister.css">
+</head>
+<body>
+    <div class="login-form">
+        <h1>login</h1>
+        <form action="/login" method="post">
+
+            <label for="">User</label>
+            <input type="text" name="user" placeholder=" write your user " required>
+            
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder=" write your pass " required>
+
+            <input type="submit" name="send" value="Login" class="btn-login">
+        </form>
+        <a href="register" class="btn-register">register</a>        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert !=  'undefined'){%>
+        <script>
+            Swal.fire({
+                title: "<%= alertTitle %>",
+                text: "<%= alertMessage %>",
+                icon:"<%= alertIcon %>",
+                showConfirmButton : <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location ='/<%=ruta%>'
+            })
+        </script>
+        <% } %>
+</body>
+</html>

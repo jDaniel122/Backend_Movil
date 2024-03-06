@@ -1,0 +1,44 @@
+/* pagina principal*/
+
+
+
+
+
+.product-container{
+    margin: 15px;
+    padding: 2px 16px;
+}
+
+.product-container:hover{
+    box-shadow: 0 19px 38px rgba(146, 145, 145, 0.3), 0 15px 12px rgba(146, 145, 145, 0.3);
+    border-radius: 15px;
+}
+
+
+
+/*Description*/
+.bodyDes{
+    color: #6c757d;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: auto;
+    text-align: center;
+}
+.page-content-D{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.product-container-D{
+    margin: 15px;
+    padding: 2px 16px;
+}
+
+.product-container-D img{
+    width: 300px;
+}
+
+.product-container-D p{
+    width: 700px;
+}
+
